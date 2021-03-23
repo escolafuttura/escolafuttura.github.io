@@ -13,7 +13,7 @@ function getParentId() {
 }
 
 function sendInscription() {
-    var clientId = document.getElementById('email').value;
+    var clientId = "oi";//document.getElementById('email').value;
     var name = document.getElementById('name').value;
     var phone = document.getElementById('telefone').value;
     var city = document.getElementById('cidade').value;
