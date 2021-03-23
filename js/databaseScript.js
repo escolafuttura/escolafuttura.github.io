@@ -8,7 +8,7 @@ function getParentId() {
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
-    let parentId = day + '-' + month + '-' + year;
+    let parentId = day + ' ' + month + ' ' + year;
     return parentId;
 }
 
