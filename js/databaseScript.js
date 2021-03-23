@@ -13,13 +13,14 @@ function getParentId() {
 }
 
 function sendInscription() {
-    var clientId = "oi";//document.getElementById('email').value;
+    var clientId = "oi/";//document.getElementById('email').value;
     var name = document.getElementById('name').value;
     var phone = document.getElementById('telefone').value;
     var city = document.getElementById('cidade').value;
+    var parentId = getParentId() + '/';
 
-    firebase.database().ref('Clientes/' + getParentId()
-        + '/' + clientId).set({
+    firebase.database().ref('Clientes/' + parentId
+        + clientId).set({
             nome: name,
             telefone: phone,
             cidade: city,
