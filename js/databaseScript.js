@@ -18,20 +18,20 @@ function sendInscription() {
     var phone = document.getElementById('telefone').value;
     var city = document.getElementById('cidade').value;
 
-    /*firebase.database().ref('clientes/' + getParentId()
+    firebase.database().ref('Clientes/' + getParentId()
         + '/' + clientId).set({
             nome: name,
             telefone: phone,
             cidade: city,
             email: clientId
-        });*/
+        });
 
-    firebase.database().ref('Clientes/').set({
+    /*firebase.database().ref('Clientes/').set({
             nome: "evrton",
             telefone: "123",
             cidade: "vit",
             email: "noo"
-        });
+        });*/
 
     /*firebase.database().ref("Clients").once('value', (snapshot) => {
         snapshot.forEach(function (childSnapshot) {
