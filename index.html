@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="imagem/png" href="images/favicon.ico" />
+    <link rel="icon" type="imagem/png" href="images/f.ico" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="css/textStyle.css" rel="stylesheet" type="text/css" />
     <link href="css/mainStyle.css" rel="stylesheet" type="text/css" />
@@ -16,12 +16,12 @@
 <body id="site">
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 
     <script src="js/firebase.js"></script>
     <script src="js/databaseScript.js"></script>
     <script src="js/showHideTagScript.js"></script>
     <script src="js/validateInfoScript.js"></script>
-    <script src="js/menuScript.js"></script>
     <script src="js/indexScript.js"></script>
 
 
@@ -35,6 +35,64 @@
         </a>
     </div>
 
+    <div id="content">
+        <form>
+            <ul>
+                <li class="text">
+                    <input type="text" id="name"
+                           value="Nome Completo"
+                           onkeydown="eraseText('name', 'Nome Completo')"
+                           onblur="putTagBack('name', 'Nome Completo')" />
+                </li>
+
+                <li class="text">
+                    <input type="tel" id="telefone"
+                           value="Telefone com DDD"
+                           onkeydown="eraseText('telefone', 'Telefone com DDD')"
+                           onblur="putTagBack('telefone', 'Telefone com DDD')" />
+                </li>
+
+                <li class="text">
+                    <input type="email" id="email"
+                           value="E-mail"
+                           onkeydown="eraseText('email', 'E-mail')"
+                           onblur="putTagBack('email', 'E-mail')" />
+
+                </li>
+
+                <li class="text">
+                    <input type="email" id="confirmarEmail"
+                           value="Confirmar E-mail"
+                           onkeydown="eraseText('confirmarEmail', 'Confirmar E-mail')"
+                           onblur="checkEmail()" />
+                </li>
+
+                <li class="text">
+                    <input list="city-list" type="text" id="cidade"
+                           value="Cidade"
+                           onfocus="eraseText('cidade', 'Cidade')"
+                           onblur="putTagBack('cidade', 'Cidade')" />
+                    <datalist id="city-list">
+                        <option value="Vitória de Santo Antão"></option>
+                        <option value="Pombos" />
+                        <option value="Bonança" />
+                        <option value="Moreno" />
+                        <option value="Glória do Goitá" />
+                        <option value="Escada" />
+                        <option value="Cabo" />
+                        <option value="Chã de Alegria" />
+                        <option value="Outras" />
+                    </datalist>
+                </li>
+
+                <li>
+                    <button class="text" onclick="sendInscription()">
+                        Finalizar Cadastro
+                    </button>
+                </li>
+            </ul>
+        </form>
+    </div>
 
     <footer>
         <ul class="ul_contact_logo">
@@ -62,11 +120,11 @@
                 (81) 9737-9344
             </li>
 
-            <li>
+            <li class="footerText">
                 Praça Duque de Caxias
             </li>
 
-            <li class="footerText">
+            <li class="footerText center">
                 Vitória de Santo Antão - PE
             </li>
         </ul>

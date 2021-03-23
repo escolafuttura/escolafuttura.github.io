@@ -1,37 +1,31 @@
-var actualPcId = 1;
-var actualPhoneId = 4;
-var timer = setInterval(slide, 4000);
+var error = true;
 
-function slide() {
-    var id = "slidex";
-
-    id = id.replace("x", actualPcId);
-    document.getElementById("slide4").classList.remove("appears");
-    document.getElementById(id).classList.remove("appears");
-    id = id.replace(actualPcId, actualPhoneId);
-    document.getElementById(id).classList.remove("appears");
-
-    nextImage();
-
-    id = "slidex";
-    id = id.replace("x", actualPcId);
-    document.getElementById(id).classList.add("appears");
-    id = id.replace(actualPcId, actualPhoneId);
-    document.getElementById(id).classList.add("appears");
+function eraseText(id, previousValue) {
+    if (document.getElementById(id)
+        .value == previousValue) { 
+        document.getElementById(id).value = "";
+    }
 }
 
-function nextImage() {
-    actualPcId += 1;
-    actualPhoneId += 1;
-
-    if (actualPcId > 3) {
-        actualPcId = 1;
-    }
-
-    if (actualPhoneId > 6) {
-        actualPhoneId = 4;
+function putTagBack(id, tag) {
+    var value = document.getElementById(id).value;
+    if (value.length <= 0) {
+        document.getElementById(id).value = tag;
     }
 
 }
 
-//checkIfUserIsLogged();
+function checkEmail() {
+    var email1 = document.getElementById("email").value;
+    var email2 = document.getElementById("confirmarEmail").value;
+
+    if (isTextEqual(email1, email2)) {
+        error = false;
+        rightInput('confirmarEmail');
+    } else {
+        error = true;
+        wrongInput('confirmarEmail');
+    }
+
+    console.log(error);
+}

@@ -8,11 +8,8 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-#menu_phone_ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin-top: 3rem;
+.error{
+    background-color: red;
 }
 
 #talkWithUs {
@@ -22,36 +19,29 @@ input[type=number] {
     z-index: 99;
 }
 
-.slide {
-    position: absolute;
-    opacity: 0;
-}
-
 .inFront{
     z-index: 9;
 }
 
-.appears {
-    animation-name: mostrar;
-    animation-duration: 2s;
-    opacity: 1;
+ul{
+    list-style: none;
 }
 
-@keyframes mostrar {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+form {
+    display: block;
+    max-width: 600px;
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #6b72ff;
+    border-style: solid;
 }
 
 footer {
     margin-top: 1rem;
     padding: 1rem;
     border-top-style: double;
-    border-color: #8fc9a6;
+    border-color: #856a97;
     border-width: 0.4rem;
     border-radius: 30px;
 }
@@ -92,17 +82,21 @@ footer {
     position: center;
 }
 
+#logoContainer {
+    width: 100%;
+    background-color: white;
+}
+
 #logo {
+    display: block;
     width: auto;
+    margin-left: auto;
+    margin-right: auto;
     height: 7rem;
-    float: left;
+    padding: 2rem;
     border-radius: 30px;
-    position: fixed;
-    left: 2rem;
-    top: 20px;
-    z-index: 21;
     border-style: double;
-    border-color: #8fc9a6;
+    border-color: #856a97;
     border-width: 0.4rem;
 }
 
@@ -151,47 +145,18 @@ footer {
     cursor: pointer;
 }
 
-#menu {
-    position: fixed;
-    top: 50px;
-    width: inherit;
-    background-color: #FFF;
-    border-style: double;
-    border-left-style: none;
-    border-color: #8fc9a6;
-    border-width: 0.4rem;
-    z-index: 20;
-}
+
 
 #site {
     width: 100%;
     height: 100%;
     margin: 0;
-    background-color: #1c0026;
-}
-
-.menu_ul {
-    margin: 0;
-    margin-left: 12rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding: 0;
 }
 
 a{
     text-decoration: none;
 }
 
-.menu_item {
-    display: inline-block;
-    margin-right: 1.5rem;
-}
-
-.menu_item:first-child{
-    margin-left: 2rem;
-    margin-right: 1.5rem;
-    float: left;
-}
 
 section{
     width: 100%;
@@ -225,17 +190,9 @@ section{
     display: none;
 }
 
-
-@media (orientation: portrait){
-    .inFront{
-        z-index: -1;
-    }
-}
-
-@media (orientation: landscape){
-    .inFront{
-        z-index: 3;
-    }
+#content{
+    width: 100%;
+    height: 80rem;
 }
 
 @media screen and (max-width: 1045px){
