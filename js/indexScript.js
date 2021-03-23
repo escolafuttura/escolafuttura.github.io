@@ -1,4 +1,5 @@
-var error = true;
+var emailError = true;
+var nameError = true;
 
 function eraseText(id, previousValue) {
     if (document.getElementById(id)
@@ -12,7 +13,6 @@ function putTagBack(id, tag) {
     if (value.length <= 0) {
         document.getElementById(id).value = tag;
     }
-
 }
 
 function checkEmail() {
@@ -20,12 +20,24 @@ function checkEmail() {
     var email2 = document.getElementById("confirmarEmail").value;
 
     if (isTextEqual(email1, email2)) {
-        error = false;
+        emailError = false;
         rightInput('confirmarEmail');
     } else {
-        error = true;
+        emailError = true;
         wrongInput('confirmarEmail');
     }
+}
 
-    console.log(error);
+function checkName() {
+    let name = document.getElementById("name").value;
+
+    if (isNameValid(name)) {
+        nameError = false;
+        rightInput('name');
+    } else {
+        nameError = true;
+        wrongInput('name');
+    }
+
+    putTagBack('name', 'Nome Completo');
 }

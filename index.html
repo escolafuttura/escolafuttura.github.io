@@ -36,13 +36,13 @@
     </div>
 
     <div id="content">
-        <form>
+        <div class="form">
             <ul>
                 <li class="text">
                     <input type="text" id="name"
                            value="Nome Completo"
                            onkeydown="eraseText('name', 'Nome Completo')"
-                           onblur="putTagBack('name', 'Nome Completo')" />
+                           onblur="checkName()" />
                 </li>
 
                 <li class="text">
@@ -84,14 +84,12 @@
                         <option value="Outras" />
                     </datalist>
                 </li>
-
-                <li>
-                    <button class="text" onclick="sendInscription()">
-                        Finalizar Cadastro
-                    </button>
-                </li>
             </ul>
-        </form>
+
+            <button class="text" onclick="sendInscription()" id="confirmar">
+                Finalizar Cadastro
+            </button>
+        </div>
     </div>
 
     <footer>

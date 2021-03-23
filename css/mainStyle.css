@@ -12,6 +12,10 @@ input[type=number] {
     background-color: red;
 }
 
+.closed{
+    display: none;
+}
+
 #talkWithUs {
     position: fixed;
     bottom: 30px;
@@ -27,7 +31,7 @@ ul{
     list-style: none;
 }
 
-form {
+.form {
     display: block;
     max-width: 600px;
     padding: 1rem;

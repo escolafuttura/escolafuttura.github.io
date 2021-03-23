@@ -8,35 +8,42 @@ function getParentId() {
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
-    let parentId = day + '-' + month + '-' + year;
+    let parentId = day + 'a'+ month +'a'+ year;
     return parentId;
 }
 
+function createId(name) {
+    let date = new Date;
+    let start = name[0] + name[1] + name[2];
+    let end = date.getHours() + 'a'
+        + date.getMinutes() + 'a' + date.getSeconds()
+        + 'a' + date.getMilliseconds();
+    let id = start + end;
+    return id;
+}
+
+
 function sendInscription() {
-    var clientId = "oi";//document.getElementById('email').value;
+    var clientId = document.getElementById('email').value;
     var name = document.getElementById('name').value;
     var phone = document.getElementById('telefone').value;
     var city = document.getElementById('cidade').value;
+    var parentId = getParentId() + '/';
+    var childId = createId(name);
 
-    firebase.database().ref('Clientes/' + getParentId()
-        + '/' + clientId).set({
+    if (emailError === false && nameError === false) {
+        var reference = 'Clientes/' + parentId
+            + childId;
+
+        firebase.database().ref(reference).set({
             nome: name,
             telefone: phone,
             cidade: city,
             email: clientId
         });
 
-    /*firebase.database().ref('Clientes/').set({
-            nome: "evrton",
-            telefone: "123",
-            cidade: "vit",
-            email: "noo"
-        });*/
-
-    /*firebase.database().ref("Clients").once('value', (snapshot) => {
-        snapshot.forEach(function (childSnapshot) {
-            console.log(childSnapshot);
-        });
-    });*/
-    console.log(getParentId());
+        window.alert("Cadastro realizado com sucesso")
+    } else {
+        window.alert("Ocorreu algum erro, o campo em vermelho indica onde deve ser mudado")
+    }
 }
