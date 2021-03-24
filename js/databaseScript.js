@@ -1,6 +1,10 @@
-//put this code in a new script file called financeScript from here
-function roundNumber(number) {
-    return (Math.round(number * 100) / 100).toFixed(2);
+var cursos = {
+    designer: "Designer Gráfico",
+    dj: "Dj Profissional",
+    eletricista: "Eletricista Residencial",
+    games: "Desenvolvedor de Games",
+    caixa: "Operador de Caixa",
+    youtuber: "Youtuber"
 }
 
 function getParentId() {
@@ -22,8 +26,12 @@ function createId(name) {
     return id;
 }
 
+function sendErrorAlert(Error) {
+    window.alert(Error);
+}
 
 function sendInscription() {
+    var course= getCourseValue();
     var clientId = document.getElementById('email').value;
     var name = document.getElementById('name').value;
     var phone = document.getElementById('telefone').value;
@@ -31,19 +39,40 @@ function sendInscription() {
     var parentId = getParentId() + '/';
     var childId = createId(name);
 
-    if (emailError === false && nameError === false) {
-        var reference = 'Clientes/' + parentId
-            + childId;
-
-        firebase.database().ref(reference).set({
-            nome: name,
-            telefone: phone,
-            cidade: city,
-            email: clientId
-        });
-
-        window.alert("Cadastro realizado com sucesso")
-    } else {
-        window.alert("Ocorreu algum erro, o campo em vermelho indica onde deve ser mudado")
+    if (courseError) {
+        sendErrorAlert("Escolha seu curso");
+        return;
     }
+
+    if (nameError) {
+        sendErrorAlert("Você não escreveu seu nome, ou colocou algum caracter proibido");
+        return;
+    }
+
+    if (phoneError) {
+        sendErrorAlert("Escreva seu telefone usando o DDD");
+        return;
+    }
+
+    /*if (emailError) {
+        sendErrorAlert("Escreva seu email, lembre-se do @");
+        return;
+    }*/
+
+    if (cityError) {
+        sendErrorAlert("Escolha sua cidade");
+        return;
+    }
+
+    var reference = 'Clientes/' + parentId + childId;
+
+    firebase.database().ref(reference).set({
+        nome: name,
+        telefone: phone,
+        cidade: city,
+        email: clientId,
+        curso: course
+    });
+    
+    window.alert("Cadastro realizado com sucesso")
 }
